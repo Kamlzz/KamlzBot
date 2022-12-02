@@ -921,10 +921,10 @@ module.exports = msgHandler = async (bocchi = new Client(), message) => {
                 if (limit.isLimit(sender.id, _limit, limitCount, isPremium, isOwner)) return await bocchi.reply(from, eng.limit(), id)
                 limit.addLimit(sender.id, _limit, isPremium, isOwner)
                 await bocchi.reply(from, eng.wait(), id)
-				require('fb-video-downloader').getInfo(q).then(info => {
-				console.log(JSON.stringify(info, null, 2))
-				bocchi.sendFileFromUrl(from, info.download.sd, 'fb.mp4', 'Title :' + `${info.title}` +'',id)
-				})
+				const fbDownloader = require("fb-downloader-scrapper")
+let response = await fbDownloader(q)
+console.log(response)
+await bocchi.sendFileFromUrl(from, response.download[0].url, 'ig.mp4','➸ Quality : ' + `${response.download[0].quality}` +'',id)
             break
 			case prefix+'ig':
 			case prefix+'igdl':
