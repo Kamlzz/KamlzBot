@@ -262,7 +262,13 @@ module.exports = msgHandler = async (bocchi = new Client(), message) => {
                     await bocchi.sendPtt(from, './media/katakan.ogg', id)     
             }else if (chats.match(new RegExp(/(untuk apa)/))) {
                     await bocchi.sendPtt(from, './media/untuk.ogg', id)     
-            }else if (chats.match(new RegExp(/(Hai)/))) {
+            }else if (chats.match(new RegExp(/(haha)/))) {
+                    await bocchi.sendPtt(from, './media/wkwk.ogg', id)     
+            }else if (chats.match(new RegExp(/(haha)/))) {
+                    await bocchi.sendPtt(from, './media/wkwk.ogg', id)     
+            }else if (chats.match(new RegExp(/(wkwk)/))) {
+                    await bocchi.sendPtt(from, './media/hai.mp3', id)     
+            }else if (chats.match(new RegExp(/(lol)/))) {
                     await bocchi.sendPtt(from, './media/hai.mp3', id)     
             }else if (chats.match(new RegExp(/(assalamualaikum)/))) {
                     await bocchi.sendPtt(from, './media/wa.ogg', id)     
@@ -1280,13 +1286,16 @@ _Search Menu_
 ======================
 _Converter Menu_
 ======================
-➸ */tomp3* reply video
-➸ */toimg* reply sticker
-➸ */imgtourl* reply foto
+➸ *#tomp3* reply video
+➸ *#toimg* reply sticker
+➸ *#imgtourl* reply foto
 ======================
-_Menu Lain_
+_Other Menu_
 ======================
-➸ */stickermenu*
+➸ *#stickermenu*
+➸ *#group*
+➸ *#owner*
+➸ *#bot*
 ======================
 
 *NOTE :*
@@ -1296,7 +1305,18 @@ THX...
 	`,id)
             break
             case 'stickermenu':
-            kamlz.sendText(from, eng.menuSticker(), id)
+            bocchi.sendText(from, eng.menuSticker(), id)
+            break
+	    case 'bot':
+            bocchi.sendText(from, eng.menuBot(), id)
+            break
+	    case 'group':
+	    if (!isGroupAdmins) return await bocchi.reply(from, eng.adminOnly(), id)
+            bocchi.sendText(from, eng.menuModeration(), id)
+            break
+	    case 'owner':
+	    if (!isOwner) return await bocchi.reply(from, eng.ownerOnly(), id)
+            bocchi.sendText(from, eng.menuOwner(), id)
             break
             case prefix+'rules':
             case prefix+'rule':
