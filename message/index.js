@@ -278,7 +278,7 @@ module.exports = msgHandler = async (bocchi = new Client(), message) => {
 					await bocchi.deleteMessage(quotedMsgObj.chatId, quotedMsgObj.id, false)
             }else if (chats.match(new RegExp(/(del)/))) {
 					await bocchi.deleteMessage(quotedMsgObj.chatId, quotedMsgObj.id, false)
-            else if (chats.match(new RegExp(/(bantu)/))) {
+	    }else if (chats.match(new RegExp(/(bantu)/))) {
                     await bocchi.sendPtt(from, './media/bantu.ogg', id)     
             }else if (chats.match(new RegExp(/(Assalamualaikum)/))) {
                     await bocchi.sendPtt(from, './media/waalaikumssalam.ogg', id)     
@@ -964,7 +964,7 @@ module.exports = msgHandler = async (bocchi = new Client(), message) => {
                             }
 				}).catch(function (error) {
 				console.error(error);
-				await bocchi.reply(from, 'Error!', id)
+				bocchi.reply(from, 'Error!', id)
 				});
 			break
 			case prefix+'igstalk':
@@ -988,7 +988,7 @@ module.exports = msgHandler = async (bocchi = new Client(), message) => {
 			bocchi.sendFileFromUrl(from, response.data.user.hd_profile_pic_url_info.url, 'apa.jpg', '➸ Bio : ' + `${response.data.user.biography}` +'\n➸ Username : ' + `${response.data.user.username}` +'\n➸ Nama : ' + `${response.data.user.full_name}` +'\n➸ Follower : ' + `${response.data.user.follower_count}` +'\n➸ Following : ' + `${response.data.user.following_count}` +'\n➸ Akun Privat : ' + `${privat}` +'',id)
 			}).catch(function (error) {
 			console.error(error);
-			await bocchi.reply(from, 'Error!', id)
+			bocchi.reply(from, 'Error!', id)
 			});
 			break
 			case prefix+'tiktok':
@@ -1034,7 +1034,7 @@ module.exports = msgHandler = async (bocchi = new Client(), message) => {
 				await bocchi.reply(from, response.data,id);
 				}).catch(function (error) {
 				console.error(error);
-				await bocchi.reply(from,error,id)
+				bocchi.reply(from,error,id)
 				});
 			break
             case prefix+'whois':
