@@ -886,8 +886,8 @@ module.exports = msgHandler = async (bocchi = new Client(), message) => {
                 limit.addLimit(sender.id, _limit, isPremium, isOwner)	
 			await bocchi.reply(from, eng.wait(), id)
 				const regex = new RegExp("\/d\/(.+)\/", 'gi')
-            if (!argsek[1].match(regex)) { await bocchi.reply(from, `Url Google Drive Yang Kamu Masukkan Salah!\nContoh : /gdrive https://drive.google.com/file/d/1Cd8KjB9-cUU_Jy8Q/view`, id) }
-                const urla = argsek[1]
+            if (!args[1].match(regex)) { await bocchi.reply(from, `Url Google Drive Yang Kamu Masukkan Salah!\nContoh : /gdrive https://drive.google.com/file/d/1Cd8KjB9-cUU_Jy8Q/view`, id) }
+                const urla = args[1]
                 const units = ['bytes', 'KB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB'];
                 function niceBytes(x){
                     let l = 0, n = parseInt(x, 10) || 0;
@@ -963,7 +963,7 @@ module.exports = msgHandler = async (bocchi = new Client(), message) => {
                             }
 				}).catch(function (error) {
 				console.error(error);
-				bocchi.reply(from, 'Error!', id)
+				bocchi.sendText(from, error, id)
 				});
 			break
 			case prefix+'igstalk':
@@ -987,7 +987,7 @@ module.exports = msgHandler = async (bocchi = new Client(), message) => {
 			bocchi.sendFileFromUrl(from, response.data.user.hd_profile_pic_url_info.url, 'apa.jpg', '➸ Bio : ' + `${response.data.user.biography}` +'\n➸ Username : ' + `${response.data.user.username}` +'\n➸ Nama : ' + `${response.data.user.full_name}` +'\n➸ Follower : ' + `${response.data.user.follower_count}` +'\n➸ Following : ' + `${response.data.user.following_count}` +'\n➸ Akun Privat : ' + `${privat}` +'',id)
 			}).catch(function (error) {
 			console.error(error);
-			bocchi.reply(from, 'Error!', id)
+			bocchi.sendText(from,error, id)
 			});
 			break
 			case prefix+'tiktok':
@@ -1011,6 +1011,7 @@ module.exports = msgHandler = async (bocchi = new Client(), message) => {
 			bocchi.sendFileFromUrl(from, response.data.data.play, 'apa.mp4', '➸ Title : ' + `${response.data.data.title}` +'\n➸ Author : ' + `@${response.data.data.author.unique_id}` +'\n➸ Nama : ' + `${response.data.data.author.nickname}` +'\n➸ Viewed : ' + `${response.data.data.play_count} Times` +'',id)
 			}).catch(function (error) {
 			console.error(error);
+			bocchi.sendText(from,error,id)
 			});
 			break
 			case prefix+'chekoperator':
@@ -1031,10 +1032,10 @@ module.exports = msgHandler = async (bocchi = new Client(), message) => {
 
 				axios.request(options).then(function (response) {
 				console.log(response.data)
-				bocchi.reply(from, response.data,id);
+				bocchi.sendText(from, response.data,id);
 				}).catch(function (error) {
 				console.error(error);
-				bocchi.reply(from,error,id)
+				bocchi.sendText(from,error,id)
 				});
 			break
             case prefix+'whois':
