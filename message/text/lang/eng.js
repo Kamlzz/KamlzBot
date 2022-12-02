@@ -18,7 +18,7 @@ exports.emptyMess = () => {
 }
 
 exports.cmdNotFound = (cmd) => {
-    return `Command *${prefix}${cmd}* not found!`
+    return `Command *${cmd}* not found!`
 }
 
 exports.blocked = (ownerNumber) => {
@@ -1034,32 +1034,17 @@ Create stickers from videos/GIFs.
 Aliases: *stikergif*
 Usage: Send videos/GIFs with caption *${prefix}stickergif* or reply to the videos/GIFs with a caption *${prefix}stickergif*.
 
-3. *${prefix}ttg*
-Create text to GIF stickers.
-Aliases: -
-Usage: *${prefix}ttg* text
-
-4. *${prefix}stickertoimg*
+3. *${prefix}stickertoimg*
 Convert sticker to image.
 Aliases: *stikertoimg*
 Usage: Reply to the stickers with a caption *${prefix}stickertoimg*.
 
-5. *${prefix}emojisticker*
-Convert emoji to sticker.
-Aliases: *emojistiker*
-Usage: *${prefix}emojisticker* emoji
-
-6. *${prefix}stickerwm*
+4. *${prefix}stickerwm*
 Create a sticker with metadata/WM.
 Aliases: *stcwm*
 Usage: Send images with caption *${prefix}stickerwm* pack_name | author_name or reply to the image with a caption *${prefix}stickerwm* pack_name | author_name.
 
-7. *${prefix}stickermeme*
-Create a sticker meme.
-Aliases: *stcmeme*
-Usage: Send images with caption *${prefix}sticker* upper_text | bottom_text or reply to the images with a caption *${prefix}sticker* upper_text | bottom_text.
-
-8. *${prefix}takestick*
+5. *${prefix}takestick*
 Edit sticker metadata.
 Aliases: -
 Usage: Reply to the stickers with a caption *${prefix}takestick* pack_name | author_name
@@ -1578,18 +1563,5 @@ The owner/hoster of this bot is independent from the responsibility and supervis
 Owner/hoster may plagiarize, add, delete, replace source code with notes *DO NOT SELL* this source code in any form.
 If an error occurs, the first person you should contact is the owner/hoster.  
 
-If you want to contributing to this project, visit:
-https://github.com/SlavyanDesu/BocchiBot
-
-Contact person:
-wa.me/${ownerNumber.replace('@c.us', '')} (Owner/hoster)
-wa.me/6281294958473 (Developer)
-
-You guys can also support me to keep this bot up to date with:
-081294958473 (OVO/Telkomsel/GoPay)
-
-Thank you!
-
-Slavyan.
     `
 }
