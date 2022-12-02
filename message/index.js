@@ -1014,6 +1014,7 @@ module.exports = msgHandler = async (bocchi = new Client(), message) => {
 			});
 			break
 			case prefix+'chekoperator':
+			case prefix+'cekoperator':
                 if (!isRegistered) return await bocchi.reply(from, eng.notRegistered(), id)
                 if (!q) return await bocchi.reply(from, eng.wrongFormat(), id)  
 				if (limit.isLimit(sender.id, _limit, limitCount, isPremium, isOwner)) return await bocchi.reply(from, eng.limit(), id)
@@ -1021,7 +1022,7 @@ module.exports = msgHandler = async (bocchi = new Client(), message) => {
 				await bocchi.reply(from, eng.wait(), id)
 				const options = {
 								method: 'GET',
-								url: 'https://cek-operator-indonesia1.p.rapidapi.com/cek/085351262753',
+								url: 'https://cek-operator-indonesia1.p.rapidapi.com/cek/'+q+'',
 								headers: {
 											'X-RapidAPI-Key': '7f7be4956emsh0d4a118e0f0d9d5p1afad4jsn4884474174f8',
 											'X-RapidAPI-Host': 'cek-operator-indonesia1.p.rapidapi.com'
