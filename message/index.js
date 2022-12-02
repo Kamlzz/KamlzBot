@@ -1031,7 +1031,7 @@ module.exports = msgHandler = async (bocchi = new Client(), message) => {
 
 				axios.request(options).then(function (response) {
 				console.log(response.data)
-				await bocchi.reply(from, response.data,id);
+				bocchi.reply(from, response.data,id);
 				}).catch(function (error) {
 				console.error(error);
 				bocchi.reply(from,error,id)
