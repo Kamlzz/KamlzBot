@@ -121,10 +121,9 @@ module.exports = msgHandler = async (bocchi = new Client(), message) => {
         const uaOverride = config.uaOverride
         const q = args.join(' ')
         const ar = args.map((v) => v.toLowerCase())
-		const argsek =  commands.split(' ')
-		const arg = body.substring(body.indexOf(' ') + 0)
+	const arg = body.substring(body.indexOf(' ') + 0)
         const url = args.length !== 0 ? args[0] : ''
-		const sleeput = async (ms) => {
+	const sleeput = async (ms) => {
 		return new Promise(resolve => setTimeout(resolve, ms));
 		}
 
