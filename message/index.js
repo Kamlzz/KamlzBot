@@ -1253,10 +1253,10 @@ module.exports = msgHandler = async (bocchi = new Client(), message) => {
             break*/
             case prefix+'menu':
             case prefix+'help':
+		if (!isRegistered) return await bocchi.reply(from, eng.notRegistered(), id)
                 const jumlahUser = _registered.length
                 const premiumz = isPremium ? 'YES' : 'NO'
-                if (!isRegistered) return await bocchi.reply(from, eng.notRegistered(), id)
-                await kamlz.sendText(from, `
+                await bocchi.sendText(from, `
 |-_-_-[ Short Menu ]-_-_-|
 
 _||||||||||||RAMPESBOT|||||||||||||_
