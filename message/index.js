@@ -33,6 +33,7 @@ const isPorn = require('is-porn')
 const exec = require('await-exec')
 const ytdl = require('ytdl-core')
 const ytsr = require('ytsr')
+const kodepos = require('kodepos.js')
 const config = require('../config.json')
 const saus = sagiri(config.nao, { results: 5 })
 const axios = require('axios')
@@ -776,6 +777,20 @@ module.exports = msgHandler = async (bocchi = new Client(), message) => {
                         await bocchi.reply(from, 'Error!', id)
                     })
             break
+			case prefix+'kodepos':
+                if (!isRegistered) return await bocchi.reply(from, eng.notRegistered(), id)
+                if (args.length !== 1) return await bocchi.reply(from, eng.wrongFormat(), id)
+                await bocchi.reply(from, eng.wait(), id)
+                const queryq = q;
+const limit = 10;
+const exact = false; // Should match query? if false, LIKE (similar in SQL) method is used.
+
+const search = kodepos.search(queryq, limit, exact);
+console.log(search);
+for (let i = 0; i < 10; i++) {
+bocchi.sendText(from,  '➸ Provinsi : ' + `${search.results[i].province}` +'\n➸ Kota : ' + `${search.results[i].city}` +'\n➸ Kecamatan : ' + `${search.results[i].district}` +'\n➸ Desa :' + `${search.results[i].urban}` +'\n➸ Kode Pos :' + `${search.results[i].postal_code}` +'' , id)                    
+}
+            break
             case prefix+'song':
             case prefix+'play':
 				if (!isRegistered) return await bocchi.reply(from, eng.notRegistered(), id)
@@ -1285,6 +1300,8 @@ _Media Menu_
 _Search Menu_
 ======================
 ➸ *#google* yg dicari
+➸ *#igs* username instagram
+➸ *#igstalk* username instagram
 ======================
 _Converter Menu_
 ======================
