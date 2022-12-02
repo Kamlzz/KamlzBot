@@ -958,8 +958,8 @@ module.exports = msgHandler = async (bocchi = new Client(), message) => {
 				axios.request(apalo).then(function (response) {
 				console.log(response.data);
 				for (let i = 0; i < 3; i++) {
-				const privat = response.data[i].user.is_private ? 'Huuh' : 'Emggak'
-                bocchi.sendFileFromUrl(from, response.data.user[i].user.profile_pic_url, `${response.data[i].user.username}.jpg`, '➸ Username : ' + `${response.data.user[i].user.username}` +'\n➸ Nama : ' + `${response.data.user[i].user.full_name}` +'\n➸ Akun Privat : ' + `${privat}` +'\n➸ Link : https://intagram.com/'+ `${response.data.user[i].user.username}` +'' , id)                    
+				const privat = response.data.users[i].user.is_private ? 'Yes' : 'No'
+                bocchi.sendFileFromUrl(from, response.data.users[i].user.profile_pic_url, `${response.data.users[i].user.username}.jpg`, '➸ Username : ' + `${response.data.users[i].user.username}` +'\n➸ Nama : ' + `${response.data.users[i].user.full_name}` +'\n➸ Akun Privat : ' + `${privat}` +'\n➸ Link : https://intagram.com/'+ `${response.data.user[i].users.username}` +'' , id)                    
                             }
 				}).catch(function (error) {
 				console.error(error);
@@ -984,6 +984,7 @@ module.exports = msgHandler = async (bocchi = new Client(), message) => {
 
 			axios.request(gangme).then(function (response) {
 			console.log(response.data);
+			const privat = response.data.user.is_private ? 'Yes' : 'No'
 			bocchi.sendFileFromUrl(from, response.data.user.hd_profile_pic_url_info.url, 'apa.jpg', '➸ Bio : ' + `${response.data.user.biography}` +'\n➸ Username : ' + `${response.data.user.username}` +'\n➸ Nama : ' + `${response.data.user.full_name}` +'\n➸ Follower : ' + `${response.data.user.follower_count}` +'\n➸ Following : ' + `${response.data.user.following_count}` +'\n➸ Akun Privat : ' + `${privat}` +'',id)
 			}).catch(function (error) {
 			console.error(error);
@@ -1305,17 +1306,17 @@ _PELANGGAR AUTOBLOCK_
 THX...
 	`,id)
             break
-            case 'stickermenu':
+            case prefix+'stickermenu':
             bocchi.sendText(from, eng.menuSticker(), id)
             break
-	    case 'bot':
+	    case prefix+'bot':
             bocchi.sendText(from, eng.menuBot(), id)
             break
-	    case 'group':
+	    case prefix+'group':
 	    if (!isGroupAdmins) return await bocchi.reply(from, eng.adminOnly(), id)
             bocchi.sendText(from, eng.menuModeration(), id)
             break
-	    case 'owner':
+	    case prefix+'owner':
 	    if (!isOwner) return await bocchi.reply(from, eng.ownerOnly(), id)
             bocchi.sendText(from, eng.menuOwner(), id)
             break
