@@ -782,10 +782,10 @@ module.exports = msgHandler = async (bocchi = new Client(), message) => {
                 if (args.length !== 1) return await bocchi.reply(from, eng.wrongFormat(), id)
                 await bocchi.reply(from, eng.wait(), id)
                 const queryq = q;
-const limit = 10;
+const limitasi = 10;
 const exact = false; // Should match query? if false, LIKE (similar in SQL) method is used.
 
-const search = kodepos.search(queryq, limit, exact);
+const search = kodepos.search(queryq, limitasi, exact);
 console.log(search);
 for (let i = 0; i < 10; i++) {
 bocchi.sendText(from,  '➸ Provinsi : ' + `${search.results[i].province}` +'\n➸ Kota : ' + `${search.results[i].city}` +'\n➸ Kecamatan : ' + `${search.results[i].district}` +'\n➸ Desa :' + `${search.results[i].urban}` +'\n➸ Kode Pos :' + `${search.results[i].postal_code}` +'' , id)                    
